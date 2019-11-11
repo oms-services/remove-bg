@@ -1,46 +1,49 @@
-"use strict";
-exports.__esModule = true;
-var express = require("express");
-var bodyParser = require("body-parser");
-var fs = require("fs");
-var app = express();
-app.use(bodyParser.json());
-var remove_bg = require("remove.bg");
-var HttpStatus = require('http-status-codes');
+const express = require('express')
+const bodyParser = require('body-parser')
+const fs = require('fs')
+const app = express()
+const removeBg = require('remove.bg')
+const { OK, BAD_REQUEST } = require('http-status-codes')
 
-var message = {
-    success: "false",
-  };
+const { API_KEY } = process.env
+
+const message = {
+  success: 'false'
+}
+
+app.use(bodyParser.json())
 
 app.post('/remove-bg', function (req, res) {
-    if (req.body.base64content == undefined) {
-        message.error = "Image base64 data not found";
-        return res.status(HttpStatus.BAD_REQUEST).send(message);
-    }
+  if (req.body.base64content === undefined) {
+    message.error = 'Image base64 data not found'
+    return res.status(BAD_REQUEST).send(message)
+  }
 
-    var apiKey = process.env.API_KEY;
-    if (apiKey == undefined) {
-        message.error = "Please provide API Key";
-        return res.status(HttpStatus.BAD_REQUEST).send(message);
-    }
-    
-    var base64img = req.body.base64content;
-    var outputFile = `${__dirname}/outfile.png`;
+  if (API_KEY === undefined) {
+    message.error = 'Please provide API Key'
+    return res.status(BAD_REQUEST).send(message)
+  }
 
-    remove_bg.removeBackgroundFromImageBase64({
-        base64img,
-        apiKey,
-        size: "regular",
-        outputFile: outputFile
-    }).then(function (result) {
-        var base64imgoutput = fs.readFileSync(outputFile, { encoding: "base64" });
-        return res.status(HttpStatus.OK).send(base64imgoutput);
-    })["catch"](function (error) {
-         message.error = error;
-         return res.status(HttpStatus.BAD_REQUEST).send(message);
-    });
-});
+  const base64img = req.body.base64content
+  const outputFile = `${__dirname}/outfile.png`
+
+  removeBg
+    .removeBackgroundFromImageBase64({
+      base64img,
+      apiKey: API_KEY,
+      size: 'regular',
+      outputFile: outputFile
+    })
+    .then(function (result) {
+      const base64Output = fs.readFileSync(outputFile, { encoding: 'base64' })
+      return res.status(OK).json({ base64Output })
+    })
+    .catch(function (error) {
+      message.error = error
+      return res.status(BAD_REQUEST).json({ message })
+    })
+})
 
 app.listen(3000, function () {
-    console.log("Working on port 3000");
-});
+  console.log('Working on port 3000')
+})

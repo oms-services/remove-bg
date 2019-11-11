@@ -24,7 +24,7 @@ actions:
     output:
       type: object
       properties:
-        base64output:
+        base64Output:
           help: The base64 content for removed background image
           type: string
 environment:
