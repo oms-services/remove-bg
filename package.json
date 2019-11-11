@@ -1,38 +1,33 @@
 {
-  "name": "omg-remove-bg",
-  "version": "1.0.0",
-  "description": "Remove backgroung microservice for OMG",
-  "main": "app.js",
+  "name": "oms-remove-bg",
+  "version": "0.0.1",
+  "description": "Removes backgrounds from images",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heaptracetechnology/microservice-imagediff.git"
+    "url": "git+https://github.com/oms-services/remove-bg.git"
   },
-  "author": "Rohit Shetty",
-  "license": "MIT",
+  "author": "Microservices",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/heaptracetechnology/microservice-imagediff"
+    "url": "https://github.com/oms-services/remove-bg/issues"
   },
-  "homepage": "https://github.com/heaptracetechnology/microservice-imagediff#readme",
+  "homepage": "https://github.com/oms-services/remove-bg#readme",
+  "keywords": [
+    "microservice",
+    "oms"
+  ],
   "dependencies": {
-    "audit": "0.0.6",
-    "body-parser": "^1.14.2",
-    "express": "^4.16.4",
-    "fix": "0.0.6",
-    "fs": "0.0.1-security",
-    "http-status-codes": "^1.3.0",
-    "multer": "1.1.0",
-    "pngjs": "3.3.3",
-    "remove.bg": "^1.0.1",
-    "request": "^2.88.0"
+    "aws-sdk": "^2.554.0",
+    "body-parser": "^1.19.0",
+    "s3-stream-upload": "^2.0.2",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "nock": "^10.0.6",
-    "should": "^7.1.1",
-    "supertest": "^3.4.2"
-  },
-  "scripts": {
-    "start": "node app.js",
-    "test": "mocha"
+    "express": "^4.16.4",
+    "request": "^2.88.0"
   }
 }
