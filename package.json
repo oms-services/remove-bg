@@ -1,18 +1,18 @@
 {
-  "name": "omg-remove-bg",
+  "name": "oms-remove-bg",
   "version": "1.0.0",
-  "description": "Remove backgroung microservice for OMG",
+  "description": "Remove background microservice for OMS",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heaptracetechnology/microservice-imagediff.git"
+    "url": "git+https://github.com/oms-services/remove-bg.git"
   },
   "author": "Rohit Shetty",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/heaptracetechnology/microservice-imagediff"
+    "url": "https://github.com/oms-services/remove-bg"
   },
-  "homepage": "https://github.com/heaptracetechnology/microservice-imagediff#readme",
+  "homepage": "https://github.com/oms-services/remove-bg#readme",
   "dependencies": {
     "audit": "0.0.6",
     "body-parser": "^1.14.2",
