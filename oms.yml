@@ -1,14 +1,20 @@
 oms: 1
-lifecycle:
-  startup:
-    command: ["npm", "start"]
 info:
   version: 1.0.0
   title: Remove Background
   description: This is a simple remove background service
   license:
     name: MIT
-    url: https://opensource.org/licenses/MIT
+    url: 'https://opensource.org/licenses/MIT'
+  contact:
+    name: Open Microservices
+    url: 'https://openmicroservices.org'
+    email: core@openmicroservices.org
+lifecycle:
+  startup:
+    command:
+      - npm
+      - start
 actions:
   process:
     help: Get background removed from image
@@ -16,7 +22,9 @@ actions:
       base64content:
         type: string
         in: requestBody
-        help: Image base64 data will process to remove background from image and provide base64 data.
+        help: >-
+          Image base64 data will process to remove background from image and
+          provide base64 data.
     http:
       port: 3000
       method: post
@@ -31,4 +39,4 @@ environment:
   API_KEY:
     required: true
     type: string
-    help: API key for service (https://www.remove.bg/profile#api-key)
+    help: 'API key for service (https://www.remove.bg/profile#api-key)'
