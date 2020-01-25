@@ -28,7 +28,7 @@
   "devDependencies": {
     "mocha": "5.2.0",
     "nock": "11.7.0",
-    "should": "7.1.1",
+    "should": "13.2.3",
     "supertest": "3.4.2"
   },
   "scripts": {
